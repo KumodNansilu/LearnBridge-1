@@ -12,7 +12,10 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // React app URL
+  credentials: true
+}));
 app.use(express.json()); // Allows us to accept JSON data in the body
 
 // Test Route

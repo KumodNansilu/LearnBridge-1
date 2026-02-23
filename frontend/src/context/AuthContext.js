@@ -62,8 +62,11 @@ const AuthProvider = ({ children }) => {
 
       return data;
     } catch (err) {
-      setError(err.message);
-      throw err;
+      const errorMessage = err.message === 'Failed to fetch' 
+        ? 'Unable to connect to server. Please ensure the backend server is running on http://localhost:5005'
+        : err.message;
+      setError(errorMessage);
+      throw new Error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -75,7 +78,7 @@ const AuthProvider = ({ children }) => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://localhost:5005/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,8 +109,11 @@ const AuthProvider = ({ children }) => {
 
       return data;
     } catch (err) {
-      setError(err.message);
-      throw err;
+      const errorMessage = err.message === 'Failed to fetch' 
+        ? 'Unable to connect to server. Please ensure the backend server is running on http://localhost:5005'
+        : err.message;
+      setError(errorMessage);
+      throw new Error(errorMessage);
     } finally {
       setLoading(false);
     }

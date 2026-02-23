@@ -13,23 +13,15 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Hash password before saving
-userSchema.pre('save', function(next) {
-  const user = this;
-
+userSchema.pre('save', async function() {
   // Only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) {
-    return next();
+  if (!this.isModified('password')) {
+    return;
   }
 
   // Hash the password
-  bcrypt.hash(user.password, 10)
-    .then(function(hashedPassword) {
-      user.password = hashedPassword;
-      next();
-    })
-    .catch(function(err) {
-      next(err);
-    });
+  const hashedPassword = await bcrypt.hash(this.password, 10);
+  this.password = hashedPassword;
 });
 
 // Compare entered password with hashed password in DB
