@@ -1,0 +1,107 @@
+.appointment-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card, #ffffff);
+  padding: 15px 40px;
+  box-shadow: 0 4px 15px rgba(20, 40, 72, 0.08); /* Soft primary shadow */
+  border-bottom: 2px solid var(--border-color, #e0e0e0);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--appt-text, #142848);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  font-size: 1.8rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted, #666);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-main, #f5f7fa);
+  color: var(--appt-text, #142848);
+}
+
+.nav-item.active {
+  background-color: var(--appt-text, #142848);
+  color: var(--bg-card, #ffffff);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(20, 40, 72, 0.2);
+}
+
+.navbar-auth .btn-signin {
+  background-color: #feead0; /* Secondary */
+  color: #142848; /* Primary */
+  border: none;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.navbar-auth .btn-signin:hover {
+  background-color: #ebd4ba;
+  transform: translateY(-2px);
+}
+
+.navbar-auth .btn-signout {
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.navbar-auth .btn-signout:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .appointment-navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 15px;
+  }
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

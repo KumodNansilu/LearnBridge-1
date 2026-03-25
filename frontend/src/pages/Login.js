@@ -9,6 +9,7 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    role: 'student',
   });
   const [localError, setLocalError] = useState('');
 
@@ -30,7 +31,7 @@ const Login = () => {
     }
 
     try {
-      const response = await login(formData.email, formData.password);
+      const response = await login(formData.email, formData.password, formData.role);
       // Redirect based on role
       navigate(`/dashboard/${response.role.toLowerCase()}`);
     } catch (err) {
@@ -73,6 +74,21 @@ const Login = () => {
               placeholder="Enter your password"
               required
             />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="role">Login As</label>
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="form-control"
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #d1d5db', fontSize: '1rem' }}
+            >
+              <option value="student">Student</option>
+              <option value="tutor">Tutor</option>
+            </select>
           </div>
 
           <button

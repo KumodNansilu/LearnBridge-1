@@ -69,11 +69,11 @@ const StudentDashboard = () => {
             <button className="card-button">Take Exam</button>
           </div>
 
-          <div className="dashboard-card">
+          <div className="dashboard-card" style={{ cursor: 'pointer' }} onClick={() => navigate('/appointments/student')}>
             <div className="card-icon">📅</div>
             <h3>Appointments</h3>
             <p>Schedule sessions with tutors</p>
-            <button className="card-button">Book Session</button>
+            <button className="card-button" onClick={(e) => { e.stopPropagation(); navigate('/appointments/student'); }}>Book Session</button>
           </div>
 
           <div className="dashboard-card">

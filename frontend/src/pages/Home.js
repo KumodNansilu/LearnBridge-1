@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { useTheme } from '../context/ThemeContext';
 import '../styles/Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   const handleGetStarted = () => {
     if (isAuthenticated) {
@@ -20,6 +22,9 @@ const Home = () => {
       <nav className="home-navbar">
         <div className="navbar-logo">LearnBridge</div>
         <div className="navbar-actions">
+          <button className="nav-link theme-toggle-btn" onClick={toggleTheme} style={{ fontSize: '1.2rem', background: 'transparent', border: 'none', cursor: 'pointer', marginRight: '15px' }}>
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           {!isAuthenticated ? (
             <>
               <button
@@ -49,9 +54,16 @@ const Home = () => {
       <div className="hero-section">
         <h1>Welcome to LearnBridge</h1>
         <p>Your comprehensive learning platform for student success</p>
-        <button className="cta-button" onClick={handleGetStarted}>
-          {isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
-        </button>
+        <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
+          <button className="cta-button" onClick={handleGetStarted}>
+            {isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
+          </button>
+          {isAuthenticated && (
+            <button className="cta-button" style={{ backgroundColor: '#feead0', color: '#142848' }} onClick={() => navigate(`/appointments/${user.role?.toLowerCase()}`)}>
+              Appointments
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="features-section">
@@ -77,7 +89,7 @@ const Home = () => {
             <h3>Mock Exams</h3>
             <p>Practice with auto-marked MCQ exams and get instant feedback</p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card" style={{ cursor: 'pointer' }} onClick={() => navigate(isAuthenticated ? `/appointments/${user.role?.toLowerCase()}` : '/login')}>
             <div className="feature-icon">📅</div>
             <h3>Appointments</h3>
             <p>Schedule one-on-one study sessions with experienced tutors</p>

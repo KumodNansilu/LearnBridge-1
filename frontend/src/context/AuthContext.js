@@ -70,12 +70,12 @@ const AuthProvider = ({ children }) => {
   };
 
   // Login user
-  const login = async (email, password) => {
+  const login = async (email, password, role) => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('http://localhost:5005/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,6 +87,10 @@ const AuthProvider = ({ children }) => {
 
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
+      }
+
+      if (role && data.role.toLowerCase() !== role.toLowerCase()) {
+        throw new Error(`Role mismatch. You are registered as a ${data.role}.`);
       }
 
       setUser({

@@ -1,0 +1,5 @@
+[dotenv@17.3.1] injecting env (3) from .env -- tip: ≡ƒöÉ prevent committing .env to code: https://dotenvx.com/precommit
+Server running on port 5005
+Attempting to connect to mongodb-memory-server as a fallback...
+MongoDB Atlas Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.r3swvct.mongodb.net
+In-Memory MongoDB Connected at: mongodb://127.0.0.1:50627/

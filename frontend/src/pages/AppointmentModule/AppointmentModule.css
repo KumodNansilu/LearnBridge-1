@@ -1,0 +1,156 @@
+/* AppointmentModule.css */
+
+.appointment-module-container {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: var(--appt-bg);
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: var(--appt-text);
+}
+
+.appointment-card {
+  background: var(--bg-card); /* Accent */
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(20, 40, 72, 0.08); /* Primary subtle shadow */
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px);
+}
+
+.appointment-header {
+  color: var(--appt-text);
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--appt-text);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #142848;
+  box-shadow: 0 0 0 3px rgba(20, 40, 72, 0.1);
+}
+
+.btn-primary {
+  background-color: #142848; /* Primary */
+  color: white; /* Accent */
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #0c182b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 40, 72, 0.2);
+}
+
+.btn-secondary {
+  background-color: #feead0; /* Secondary */
+  color: #142848;
+  border: 1px solid #e0c8a8;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #ebd4ba;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.badge {
+  background-color: #feead0; /* Secondary */
+  color: #142848;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Grid layout for Dashboard */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.session-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(20, 40, 72, 0.05);
+  border-top: 4px solid #142848;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.session-card p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.star-rating {
+  color: #f59e0b; /* Golden hue for stars */
+  font-size: 1.2rem;
+}
